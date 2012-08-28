@@ -12,8 +12,7 @@
         "negotiator" : "~0.2.5"
     },
     "devDependencies" : {
-        "tap" : "~0.3.0",
-        "filed" : "~0.0.7"
+        "tap" : "~0.3.0"
     },
     "scripts" : {
         "test" : "tap test/*.js"
