@@ -1,6 +1,6 @@
 # oppressor
 
-streaming http compression negotiator
+streaming http compression response negotiator
 
 # example
 
