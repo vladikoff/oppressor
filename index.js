@@ -63,17 +63,13 @@ function proxyResponse (stream, dst, doIntercept) {
     var proxied = [];
     [ 'writeContinue', 'writeHead', 'setHeader', 'sendDate', 'getHeader',
     'removeHeader', 'addTrailers' ].forEach(function (name) {
-        stream[name] = dst
-            ? function () {
-                if (doIntercept && intercept(name, arguments)) return;
-                return dst[name].apply(dst, arguments);
-            }
-            : function () {
-                // hopefully the return value wasn't important >_<
-                if (doIntercept && intercept(name, arguments)) return;
-                proxied.push({ name : name, arguments : arguments });
-            }
-        ;
+        stream[name] = function () {
+            if (doIntercept && intercept(name, arguments)) return;
+            if (dst) return dst[name].apply(dst, arguments);
+            
+            // hopefully the return value isn't important...
+            proxied.push({ name : name, arguments : arguments });
+        };
     });
     return proxied;
 }
