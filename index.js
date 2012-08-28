@@ -31,13 +31,14 @@ module.exports = function (req) {
                 target[p.name].apply(target, p.arguments);
             });
             
-            proxyResponse(stream, target);
+            target.removeHeader('content-length');
+            proxyResponse(stream, target, enc !== 'identity');
         }
         return pipe.apply(this, arguments);
     };
     
     stream.statusCode = 200;
-    var proxied = proxyResponse(stream);
+    var proxied = proxyResponse(stream, null, enc !== 'identity');
     return stream;
 };
 
@@ -56,23 +57,38 @@ function unacceptable () {
     return stream;
 }
 
-function proxyResponse (stream, dst) {
+function proxyResponse (stream, dst, doIntercept) {
     // proxy calls through so this module works with request and filed-style
     // streaming pipe http response hijacking
     var proxied = [];
     [ 'writeContinue', 'writeHead', 'setHeader', 'sendDate', 'getHeader',
-    'removeHeader', 'addTrailers' ]
-        .forEach(function (name) {
-            stream[name] = dst
-                ? function () {
-                    return dst[name].apply(dst, arguments);
-                }
-                : function () {
-                    // hopefully the return value wasn't important >_<
-                    proxied.push({ name : name, arguments : arguments });
-                }
-            ;
-        })
-    ;
+    'removeHeader', 'addTrailers' ].forEach(function (name) {
+        stream[name] = dst
+            ? function () {
+                if (doIntercept && intercept(name, arguments)) return;
+                return dst[name].apply(dst, arguments);
+            }
+            : function () {
+                // hopefully the return value wasn't important >_<
+                if (doIntercept && intercept(name, arguments)) return;
+                proxied.push({ name : name, arguments : arguments });
+            }
+        ;
+    });
     return proxied;
+}
+
+function intercept (name, args) {
+    if (name === 'setHeader'
+    && String(args[0].toLowerCase()) === 'content-length') {
+ 
+        return true;
+    }
+    if (name === 'writeHead' && typeof args[1] === 'object') {
+        Object.keys(args[1]).forEach(function (key) {
+            if (String(key).toLowerCase() === 'content-length') {
+                delete args[0][key];
+            }
+        });
+    }
 }
