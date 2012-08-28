@@ -2,6 +2,8 @@
 
 streaming http compression response negotiator
 
+[![build status](https://secure.travis-ci.org/substack/oppressor.png)](http://travis-ci.org/substack/oppressor)
+
 # example
 
 You can use plain old streams:
