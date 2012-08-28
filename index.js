@@ -15,8 +15,6 @@ module.exports = function (req) {
     if (!createStream) return unacceptable();
     var stream = createStream();
     
-    stream = createStream();
-    
     var pipe = stream.pipe;
     stream.pipe = function (target) {
         if (target && target.writeHead && target.setHeader) {
@@ -70,6 +68,7 @@ function proxyResponse (stream, dst) {
                     return dst[name].apply(dst, arguments);
                 }
                 : function () {
+                    // hopefully the return value wasn't important >_<
                     proxied.push({ name : name, arguments : arguments });
                 }
             ;
