@@ -1,6 +1,6 @@
 {
     "name" : "oppressor",
-    "version" : "0.0.0",
+    "version" : "0.0.1",
     "description" : "streaming http compression response negotiator",
     "main" : "index.js",
     "directories" : {
