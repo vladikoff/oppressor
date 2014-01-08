@@ -26,9 +26,6 @@ or you can use fancy streaming static file server modules like
 [filed](http://github.com/mikeal/filed) that set handy things like etag,
 last-modified, and content-type headers for you:
 
-(For now you'll need to use [my fork](https://github.com/substack/filed)
-until [this pull request](https://github.com/mikeal/filed/pull/25) gets merged.)
-
 ``` js
 var oppressor = require('oppressor');
 var filed = require('filed');
