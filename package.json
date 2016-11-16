@@ -1,43 +1,39 @@
 {
-    "name" : "oppressor",
-    "version" : "0.0.1",
-    "description" : "streaming http compression response negotiator",
-    "main" : "index.js",
-    "directories" : {
-        "example" : "example",
-        "test" : "test"
-    },
-    "dependencies" : {
-        "through" : "~0.1.4",
-        "response-stream" : "~0.0.0",
-        "negotiator" : "~0.2.5"
-    },
-    "devDependencies" : {
-        "tap" : "~0.3.0"
-    },
-    "scripts" : {
-        "test" : "tap test/*.js"
-    },
-    "repository" : {
-        "type" : "git",
-        "url" : "git://github.com/substack/oppressor.git"
-    },
-    "homepage" : "https://github.com/substack/oppressor",
-    "keywords" : [
-        "gzip",
-        "compress",
-        "deflate",
-        "http",
-        "negotiator",
-        "pipe",
-        "stream",
-        "request",
-        "response"
-    ],
-    "author" : {
-        "name" : "James Halliday",
-        "email" : "mail@substack.net",
-        "url" : "http://substack.net"
-    },
-    "license" : "MIT"
+  "name": "oppressor-contrib",
+  "version": "1.0.0",
+  "description": "fork of the streaming http compression response negotiator",
+  "main": "index.js",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "dependencies": {
+    "negotiator": "~0.6.1",
+    "response-stream": "~0.0.0",
+    "through": "~0.1.4"
+  },
+  "devDependencies": {
+    "tap": "~0.3.0"
+  },
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vladikoff/oppressor-contrib.git"
+  },
+  "homepage": "https://github.com/vladikoff/oppressor-contrib",
+  "keywords": [
+    "gzip",
+    "compress",
+    "deflate",
+    "http",
+    "negotiator",
+    "pipe",
+    "stream",
+    "request",
+    "response"
+  ],
+  "author": "James Halliday and contributors",
+  "license": "MIT"
 }
