@@ -1,11 +1,10 @@
-# oppressor
+# oppressor-contrib
 
 > Fork of https://github.com/substack/oppressor
 
 streaming http compression response negotiator
 
-[![build status](https://secure.travis-ci.org/substack/oppressor.png)](http://travis-ci.org/substack/oppressor)
-
+[![Build Status](https://travis-ci.org/vladikoff/oppressor-contrib.svg?branch=master)](https://travis-ci.org/vladikoff/oppressor-contrib)
 # example
 
 You can use plain old streams:
