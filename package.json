@@ -1,6 +1,6 @@
 {
   "name": "oppressor-contrib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "fork of the streaming http compression response negotiator",
   "main": "index.js",
   "directories": {
