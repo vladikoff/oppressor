@@ -1,5 +1,7 @@
 # oppressor
 
+> Fork of https://github.com/substack/oppressor
+
 streaming http compression response negotiator
 
 [![build status](https://secure.travis-ci.org/substack/oppressor.png)](http://travis-ci.org/substack/oppressor)
